@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d273e">
+  <meta name="description" content="Samen Thuis — zelfstandige testomgeving voor de nieuwe app. Local-first, zonder Supabase.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <title>Samen Thuis · Testomgeving</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Hoofdnavigatie">
+      <a class="brand" href="#today" data-page-link="today" aria-label="Samen Thuis startpagina">
+        <span class="brand-mark" aria-hidden="true">st</span>
+        <span class="brand-copy"><strong>Samen Thuis</strong><small>ons leven, in balans</small></span>
+      </a>
+      <div class="nav-section-label">OVERZICHT</div>
+      <nav class="primary-nav" id="desktop-nav">
+        <button class="nav-item is-active" data-page-link="today"><span class="nav-icon">⌂</span><span>Vandaag</span></button>
+        <button class="nav-item" data-page-link="agenda"><span class="nav-icon">▦</span><span>Agenda</span></button>
+        <button class="nav-item" data-page-link="tasks"><span class="nav-icon">☑</span><span>Taken</span></button>
+        <button class="nav-item" data-page-link="challenges"><span class="nav-icon">✳</span><span>Challenges</span></button>
+      </nav>
+      <div class="nav-section-label">THUIS & SAMEN</div>
+      <nav class="primary-nav">
+        <button class="nav-item" data-page-link="mealplan"><span class="nav-icon">◒</span><span>Weekmenu</span></button>
+        <button class="nav-item" data-page-link="groceries"><span class="nav-icon">▤</span><span>Boodschappen</span></button>
+        <button class="nav-item" data-page-link="stock"><span class="nav-icon">▥</span><span>Voorraad</span></button>
+        <button class="nav-item" data-page-link="home"><span class="nav-icon">⌂</span><span>Woning</span></button>
+        <button class="nav-item" data-page-link="budget"><span class="nav-icon">€</span><span>Budget</span></button>
+      </nav>
+      <div class="nav-section-label">LEUKE DINGEN</div>
+      <nav class="primary-nav">
+        <button class="nav-item" data-page-link="dates"><span class="nav-icon">♡</span><span>Date ideeën</span></button>
+        <button class="nav-item" data-page-link="travel"><span class="nav-icon">⌁</span><span>Reizen</span></button>
+        <button class="nav-item" data-page-link="extras"><span class="nav-icon">✦</span><span>Extra</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-page-link="settings"><span class="nav-icon">⚙</span><span>Instellingen</span></button>
+        <div class="profile-chip"><span class="avatar avatar-blue">K</span><span class="avatar avatar-purple">D</span><span class="profile-copy"><strong>Kees & Daphne</strong><small>Ons huishouden</small></span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menu-toggle" aria-label="Menu openen" aria-expanded="false">☰</button>
+        <div class="breadcrumb"><span>Ons thuis</span><span class="breadcrumb-slash">/</span><strong id="breadcrumb-current">Vandaag</strong></div>
+        <div class="topbar-actions"><span class="local-pill"><span class="status-dot"></span> Lokaal opgeslagen</span><button class="icon-button" id="quick-add-open" aria-label="Snel iets toevoegen" title="Snel toevoegen">＋</button></div>
+      </header>
+
+      <section class="page-content" id="page-content" tabindex="-1">
+        <div class="welcome-row">
+          <div><p class="eyebrow" id="today-date">SAMEN THUIS</p><h1 id="page-title">Goedemorgen, Kees & Daphne <span class="title-sparkle">✦</span></h1><p class="page-subtitle" id="page-subtitle">Een rustig overzicht van wat vandaag belangrijk is.</p></div>
+          <div class="welcome-decoration" aria-hidden="true"><span>✳</span><span>✦</span><span>·</span></div>
+        </div>
+
+        <div class="prototype-banner"><span class="prototype-icon">✧</span><div><strong>Nieuwe testomgeving</strong><p>Dit is de basis waarop we stap voor stap verder bouwen. Je gegevens blijven op dit apparaat.</p></div><button class="banner-close" id="banner-dismiss" aria-label="Melding sluiten">×</button></div>
+
+        <div class="page-grid" id="today-dashboard">
+          <section class="panel focus-panel">
+            <div class="panel-heading"><div><p class="eyebrow">KLEINE STAPPEN</p><h2>Jouw focus vandaag</h2></div><span class="panel-icon violet">✦</span></div>
+            <p class="muted">Kies één ding dat vandaag wat rust of plezier oplevert.</p>
+            <form id="focus-form" class="inline-form"><input id="focus-input" maxlength="140" placeholder="Bijv. vanavond samen wandelen…" aria-label="Focus voor vandaag"><button class="button button-primary" type="submit">Bewaar focus</button></form>
+            <div id="focus-current" class="focus-current empty-state">Er is nog geen focus gekozen.</div>
+          </section>
+
+          <section class="panel tasks-panel">
+            <div class="panel-heading"><div><p class="eyebrow">PRAKTISCH</p><h2>Testtaken</h2></div><button class="button button-secondary button-small" id="task-add-open">＋ Taak</button></div>
+            <p class="muted">Probeer de interacties uit; later koppelen we dit aan de slimme planning.</p>
+            <form id="task-form" class="inline-form task-entry"><input id="task-input" maxlength="120" placeholder="Nieuwe testtaak…" aria-label="Nieuwe testtaak" required><button class="button button-primary" type="submit">Toevoegen</button></form>
+            <ul class="task-list" id="task-list" aria-live="polite"></ul>
+            <div class="panel-footnote" id="task-count">0 taken</div>
+          </section>
+
+          <section class="panel stat-panel"><div class="panel-heading"><div><p class="eyebrow">SAMEN OP PAD</p><h2>Onze basis</h2></div><span class="panel-icon blue">♡</span></div><div class="stat-pair"><div class="stat-tile"><span>Personen</span><strong>2</strong><small>Kees & Daphne</small></div><div class="stat-tile"><span>Opslag</span><strong>100%</strong><small>Op dit apparaat</small></div></div><p class="small-note">Geen account, cloud of Supabase nodig in deze testversie.</p></section>
+
+          <section class="panel design-panel"><div class="panel-heading"><div><p class="eyebrow">LAAG 1 + 2</p><h2>Visuele basis</h2></div><span class="panel-icon peach">◈</span></div><div class="swatch-row"><div class="swatch"><span style="background:#0d273e"></span><small>Achtergrond</small><code>#0d273e</code></div><div class="swatch"><span style="background:#7768d8"></span><small>Accent</small><code>#7768d8</code></div><div class="swatch"><span style="background:#e8e5ff"></span><small>Paars licht</small><code>#e8e5ff</code></div><div class="swatch"><span style="background:#f7f8fc;border:1px solid #dfe4ef"></span><small>Kaart</small><code>#f7f8fc</code></div></div><div class="component-preview"><button class="button button-primary" type="button">Primaire knop</button><button class="button button-secondary" type="button">Secundair</button><span class="demo-input">Tekstvak voorbeeld</span></div></section>
+        </div>
+
+        <section class="placeholder-page panel hidden" id="placeholder-page"><div class="placeholder-illustration">✧</div><p class="eyebrow">PAGINA-SKELET</p><h2 id="placeholder-title">Agenda</h2><p id="placeholder-description">De plek en navigatie staan klaar. De echte functies bouwen we per onderdeel, zodat we elke laag goed kunnen testen.</p><div class="placeholder-chips"><span>Layout klaar</span><span>Lokale basis</span><span>Functies volgen</span></div><button class="button button-secondary" data-page-link="today">Terug naar Vandaag</button></section>
+      </section>
+      <footer class="app-footer"><span>Samen Thuis · Testversie 0.1.0</span><span>Gebouwd in lagen <span class="footer-heart">♥</span></span></footer>
+    </main>
+  </div>
+  <div class="mobile-scrim" id="mobile-scrim"></div>
+  <nav class="mobile-bottom-nav" aria-label="Snelle navigatie"><button class="mobile-nav-item is-active" data-page-link="today"><span>⌂</span><small>Vandaag</small></button><button class="mobile-nav-item" data-page-link="agenda"><span>▦</span><small>Agenda</small></button><button class="mobile-nav-item" data-page-link="tasks"><span>☑</span><small>Taken</small></button><button class="mobile-nav-item" data-page-link="challenges"><span>✳</span><small>Challenges</small></button><button class="mobile-nav-item" data-page-link="extras"><span>✦</span><small>Meer</small></button></nav>
+  <dialog class="quick-add-dialog" id="quick-add-dialog"><form method="dialog" class="dialog-head"><div><p class="eyebrow">SNEL TOEVOEGEN</p><h2>Wat wil je toevoegen?</h2></div><button class="icon-button" aria-label="Sluiten">×</button></form><div class="quick-add-options"><button data-quick-action="task"><span>☑</span><strong>Een taak</strong><small>Iets dat nog moet gebeuren</small></button><button data-quick-action="focus"><span>✦</span><strong>Focus voor vandaag</strong><small>Iets waar je aandacht aan wilt geven</small></button><button data-quick-action="idea"><span>♡</span><strong>Een idee</strong><small>Bewaar een leuk idee voor later</small></button></div></dialog>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
